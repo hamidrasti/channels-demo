@@ -1,2 +1,2 @@
 # channels-demo
-A django channels demo app
+A django channels demo app with docker and redis
