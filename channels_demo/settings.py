@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'core',
     'chat',
 ]
 
@@ -71,6 +72,17 @@ TEMPLATES = [
 
 ASGI_APPLICATION = "channels_demo.asgi.application"
 WSGI_APPLICATION = 'channels_demo.wsgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [
+                (os.environ.get('REDIS_HOST'), os.environ.get('REDIS_PORT'))
+            ],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
